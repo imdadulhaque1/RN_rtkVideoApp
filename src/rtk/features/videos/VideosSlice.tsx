@@ -7,6 +7,7 @@ const initialState: initialStateInterface = {
   isLoading: false,
   isError: false,
   error: '',
+  tags: [],
 };
 
 // Ccreating AsyncThunk
