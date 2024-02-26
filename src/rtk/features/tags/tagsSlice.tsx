@@ -1,14 +1,13 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import {initialStateInterface} from '@src/interfaces/initialStateInterface';
+import {tagsInitialStateInterface} from '@src/interfaces/initialStateInterface';
 import {getTags} from './tagsAPI';
 
-const initialState: initialStateInterface = {
+const initialState: tagsInitialStateInterface = {
   tags: [],
   isLoading: false,
   isError: false,
   error: '',
-  videos: [],
 };
 
 // Ccreating AsyncThunk

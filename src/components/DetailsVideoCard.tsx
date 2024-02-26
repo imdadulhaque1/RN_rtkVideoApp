@@ -2,6 +2,7 @@ import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
 import {VideoDetailsInterface} from '@src/interfaces/VideoDetailsInterface';
 import {useNavigation} from '@react-navigation/native';
+import ComTag from './ComTag';
 
 interface Props {
   thumbnail: string;
@@ -13,6 +14,7 @@ interface Props {
   views: string;
   duration: string;
   id: string;
+  tags: [];
 }
 
 const DetailsVideoCard: FC<Props> = ({
@@ -25,6 +27,7 @@ const DetailsVideoCard: FC<Props> = ({
   views,
   duration,
   id,
+  tags,
 }) => {
   return (
     <View style={styles.container}>
@@ -48,16 +51,29 @@ const DetailsVideoCard: FC<Props> = ({
         <Text style={styles.textStyle}>Unlike: {unlikes}</Text>
         <Text style={styles.textStyle}>Views: {views}</Text>
       </View>
+      <View
+        style={{
+          flexWrap: 'wrap',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        {tags.length > 0 &&
+          tags.map((tag, index) => {
+            return <ComTag key={index} tagTitle={tag} />;
+          })}
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#c9c1e6',
+    backgroundColor: '#aaa9f5',
     margin: 10,
     borderRadius: 10,
     paddingHorizontal: 5,
+    paddingVertical: 10,
   },
   imgStyle: {
     height: 200,

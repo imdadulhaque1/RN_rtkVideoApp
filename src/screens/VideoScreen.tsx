@@ -12,6 +12,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {fetchVideos} from '@rtk/features/videos/VideosSlice';
 import Loading from '@components/Loading';
 import AllTags from '@components/AllTags';
+import VideoDetailsScreen from './VideoDetailsScreen';
+import {useNavigation} from '@react-navigation/native';
 
 interface Props {}
 
@@ -27,6 +29,8 @@ const VideoScreen: FC<Props> = props => {
   const [rowData, setRowData] = useState<VideoDetailsInterface>();
   const [searchValue, setSearchValue] = useState<string>();
   const [isRowDataShow, setIsRowDataShow] = useState(false);
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     // getVideoDetails();
@@ -48,11 +52,10 @@ const VideoScreen: FC<Props> = props => {
       return (
         <VideoCard
           onPress={() => {
-            console.log('item.tags: ', item.tags);
+            console.log(item.tags);
 
             // @ts-ignore
-            setRowData(item);
-            setIsRowDataShow(true);
+            navigation.navigate('VideoDetails', {id: item.id});
           }}
           key={index}
           thumbnail={item.thumbnail}
@@ -78,51 +81,6 @@ const VideoScreen: FC<Props> = props => {
         <AllTags />
       </View>
       {content}
-      {/* {!isRowDataShow && (
-        <ScrollView>
-          {videoDetailsData.map((item, index) => {
-            return (
-              <VideoCard
-                onPress={() => {
-                  console.log('item.tags: ', item.tags);
-
-                  // @ts-ignore
-                  setRowData(item);
-                  setIsRowDataShow(true);
-                }}
-                key={index}
-                thumbnail={item.thumbnail}
-                title={item.title}
-                author={item.author}
-                likes={item.likes}
-                unlikes={item.unlikes}
-              />
-            );
-          })}
-        </ScrollView>
-      )} */}
-      {isRowDataShow && (
-        <View style={styles.btnContainer}>
-          <DetailsVideoCard
-            thumbnail={rowData?.thumbnail}
-            title={rowData?.title}
-            author={rowData?.author}
-            likes={rowData?.likes}
-            unlikes={rowData?.unlikes}
-            description={rowData?.description}
-            views={rowData?.views}
-            duration={rowData?.duration}
-            id={rowData?.id}
-          />
-          <Pressable
-            onPress={() => {
-              setIsRowDataShow(false);
-            }}
-            style={styles.btnStyle}>
-            <Text style={styles.textStyle}>Go Back</Text>
-          </Pressable>
-        </View>
-      )}
     </ScrollView>
   );
 };
