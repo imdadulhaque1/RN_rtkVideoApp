@@ -20,3 +20,9 @@ export interface videoInitialStateInterface {
   isError: boolean;
   error: string | undefined;
 }
+export interface relatedVideoInitialStateInterface {
+  relatedVideos: any;
+  isLoading: boolean;
+  isError: boolean;
+  error: string | undefined;
+}

@@ -13,6 +13,7 @@ module.exports = {
           '@rtk': './src/rtk',
           '@navigations': './src/navigations',
           '@axios': './src/axios',
+          '@constans': './src/constans',
           '@src': './src',
         },
       },
