@@ -13,11 +13,13 @@ const VideoDetailsScreen: FC<Props> = props => {
   const dispatch = useDispatch();
   const {video, isLoading, isError, error} = useSelector(state => state.video);
   const route = useRoute();
+  // @ts-ignore
   const {id} = route.params;
 
   const navigation = useNavigation();
 
   useEffect(() => {
+    // @ts-ignore
     dispatch(fetchVideo(id));
   }, [dispatch]);
 
@@ -80,6 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 20,
   },
   textStyle: {
     fontSize: 14,

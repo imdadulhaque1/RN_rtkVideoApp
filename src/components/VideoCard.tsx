@@ -2,6 +2,7 @@ import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
 import {VideoDetailsInterface} from '@src/interfaces/VideoDetailsInterface';
 import {useNavigation} from '@react-navigation/native';
+// import globalStyles from '@constans/styles/globallyStyles';
 
 interface Props {
   thumbnail: string;
@@ -40,15 +41,17 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
   },
+
+  textStyle: {
+    color: 'black',
+    alignSelf: 'center',
+  },
+
   imgStyle: {
     height: 200,
     width: '100%',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-  },
-  textStyle: {
-    color: 'black',
-    alignSelf: 'center',
   },
 });
 
